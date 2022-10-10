@@ -1,0 +1,864 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>ExtentReports</title>
+	<meta name="description" content="extent" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+	<meta name="apple-mobile-web-app-title" content="extent">
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/logger/css/logger-style.css" type="text/css" />
+</head>
+	<script type="text/javascript">
+		/*! json-tree - v0.2.2 - 2017-09-25, MIT LICENSE */
+		var JSONTree=function(){var n={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","/":"&#x2F;"},t=0,r=0;this.create=function(n,t){return r+=1,N(u(n,0,!1),{class:"jstValue"})};var e=function(t){return t.replace(/[&<>'"]/g,function(t){return n[t]})},s=function(){return r+"_"+t++},u=function(n,t,r){if(null===n)return f(r?t:0);switch(typeof n){case"boolean":return l(n,r?t:0);case"number":return i(n,r?t:0);case"string":return o(n,r?t:0);default:return n instanceof Array?a(n,t,r):c(n,t,r)}},c=function(n,t,r){var e=s(),u=Object.keys(n).map(function(r){return j(r,n[r],t+1,!0)}).join(m()),c=[g("{",r?t:0,e),N(u,{id:e}),p("}",t)].join("\n");return N(c,{})},a=function(n,t,r){var e=s(),c=n.map(function(n){return u(n,t+1,!0)}).join(m());return[g("[",r?t:0,e),N(c,{id:e}),p("]",t)].join("\n")},o=function(n,t){var r=e(JSON.stringify(n));return N(v(r,t),{class:"jstStr"})},i=function(n,t){return N(v(n,t),{class:"jstNum"})},l=function(n,t){return N(v(n,t),{class:"jstBool"})},f=function(n){return N(v("null",n),{class:"jstNull"})},j=function(n,t,r){var s=v(e(JSON.stringify(n))+": ",r),c=N(u(t,r,!1),{});return N(s+c,{class:"jstProperty"})},m=function(){return N(",\n",{class:"jstComma"})},N=function(n,t){return d("span",t,n)},d=function(n,t,r){return"<"+n+Object.keys(t).map(function(n){return" "+n+'="'+t[n]+'"'}).join("")+">"+r+"</"+n+">"},g=function(n,t,r){return N(v(n,t),{class:"jstBracket"})+N("",{class:"jstFold",onclick:"JSONTree.toggle('"+r+"')"})};this.toggle=function(n){var t=document.getElementById(n),r=t.parentNode,e=t.previousElementSibling;""===t.className?(t.className="jstHiddenBlock",r.className="jstFolded",e.className="jstExpand"):(t.className="",r.className="",e.className="jstFold")};var p=function(n,t){return N(v(n,t),{})},v=function(n,t){return Array(2*t+1).join(" ")+n};return this}();
+	</script>
+	<body class="standard">
+		<div class="app" id="app">
+<div id="aside" class="app-aside fade box-shadow-x folded dark">
+	<div class="sidenav modal-dialog dk">
+		<div class="navbar">
+			<a href="#" class="navbar-brand">
+			<span class="d-inline small"><img src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png"></span>
+			</a>
+		</div>
+		<div class="flex hide-scroll">
+			<div class="scroll">
+				<div class="nav-border b-primary">
+					<ul class="nav bg">
+						<li>
+							<a href="index.html">
+							<span class="nav-icon">
+							<i class="fa fa-align-left"></i>
+							</span>
+							<span class="nav-text">Tests</span>
+							</a>
+						</li>
+												<li>
+							<a href="exception.html">
+							<span class="nav-icon">
+							<i class="fa fa-warning"></i>
+							</span>
+							<span class="nav-text">Exceptions</span>
+							</a>
+						</li>
+						<li>
+							<a href="dashboard.html">
+							<span class="nav-icon">
+							<i class="fa fa-dashboard"></i>
+							</span>
+							<span class="nav-text">Dashboard</span>
+							</a>
+						</li>
+						<li class="pb-2 hidden-folded"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="no-shrink">
+			<div class="nav-fold">
+				<a id="lightsout" class="d-flex p-2-3"><span><i class="fa fa-desktop"></i></span></a>
+				<div class="hidden-folded flex p-2-3 bg">
+					<div class="d-flex p-1">
+						<a href="http://github.com/extent-framework/extentreports" class="flex text-nowrap"><i class="fa fa-github"></i></a>
+						<a href="http://extentreports.com" class="px-2"><i class="fa fa-book"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>			<div id="content" class="app-content box-shadow-0" role="main">
+				<div id="content" class="app-content box-shadow-2 box-radius-2" role="main">
+					<div class="content-header white  box-shadow-2" id="content-header">
+						<div class="navbar navbar-expand-lg">
+							<div class="input-group flex mr-1">
+				              	<input id="qt" type="text" class="form-control px-0 no-bg no-border no-shadow search" placeholder="Search..." required="">
+				              	<span class="input-group-btn">
+				                	<button class="btn no-bg no-border no-shadow" type="button"><i class="fa fa-search text-muted text-xs"></i></button>
+				              	</span>
+				            </div>
+							<ul class="nav nav-xs flex-row no-border pull-right">
+								<li class="nav-item dropdown">
+									<a class="nav-link b-l" data-toggle="dropdown">
+									<span class="text-xs">
+									<i class="fa fa-warning"></i>
+									<i class="fa fa-caret-down"></i>
+									</span>
+									</a>
+									<div class="dropdown-menu pt-0 mt-2 animate fadeIn">
+										<a class="dropdown-item" href="#"><span class="tf" status="pass"><i class="fa fa-dot-circle-o text-success"></i>Pass</span></a>
+										<a class="dropdown-item" href="#"><span class="tf" status="fail"><i class="fa fa-dot-circle-o text-danger"></i>Fail</span></a>
+										
+										
+										
+										
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#"><span class="tf" status="clear"><i class="fa fa-dot-circle-o text-warn"></i>Clear</span></a>
+									</div>
+								</li>
+						        <li class="nav-item lightsout"><a class="nav-link b-l" href="#"><span><i class="fa fa-desktop"></i></span></a></li>
+								<li><a href="#" class="b-l"><span class="badge badge-pull">ExtentReports</span></a></li>
+								<li><a href="#" class="b-l"><span class="badge badge-pull">4.0</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="content-main " id="content-main">
+						<div class="padding">
+							<div class="row justify-content-md-center">
+								<div class="col-md-8 col-sm-12">
+									<div class="logger-content">
+										<h6 class="mb-3 ml-1">Test Logs</h6>
+											<div class="tsc" status="fail">
+											<div class="st fail test l0" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:32</span>&nbsp;
+												<span class="ts">fail</span>&nbsp;&nbsp;
+												<span class="tn">[Test form functionality] started</span>
+												
+											</div>
+											<div class="st pass test l1" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:32</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">|---[Go to webSite] started</span>
+												
+											</div>
+											<div class="st pass test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:32</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Given entry to the page] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:35</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Given entry to the page]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:35</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[When ignore security restriction] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:35</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[When ignore security restriction]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:35</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Then can i go to the form page] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Then can i go to the form page]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st fail test l1" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+												<span class="ts">fail</span>&nbsp;&nbsp;
+												<span class="tn">|---[As a user, I want the titles of the fields corresponding to Neighborhood and Message to be well written.] started</span>
+												
+											</div>
+											<div class="st pass test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Given look for the neighborhood label] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Given look for the neighborhood label]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[And look for the message label] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[And look for the message label]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st fail test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+												<span class="ts">fail</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Then the labels are well written] started</span>
+												
+												<div class="st fail">
+													<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+													<span class="ts">fail</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Then the labels are well written]</span>
+													
+													<span class="td">threw an exception<br><textarea disabled class="code-block">org.junit.ComparisonFailure: expected:<[Barrio:]> but was:<[Varrio]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at steps.LabelsSteps.theLabelsAreWellWritten(LabelsSteps.java:29)
+	at ✽.the labels are well written(src/test/resources/features/Form.feature:12)
+</textarea></span>
+												</div>
+											</div>
+											<div class="st fail test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+												<span class="ts">fail</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)] started</span>
+												
+												<div class="st info">
+													<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+													<span class="ts">info</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)]</span>
+													
+													<span class="td">Scenario fallido, ver imagen adjunta.</span>
+												</div>
+												<div class="st fail">
+													<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+													<span class="ts">fail</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)]</span>
+													
+													<span class="td">threw an exception<br><textarea disabled class="code-block">cucumber.runtime.CucumberException: java.io.IOException: Failed to create directory C:\Users\Jaiver%20Mauricio%20M\Documents\SOFTESTING\SeleniumAutomatizacion\app\test-output
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.createReportFileOutputStream(ExtentCucumberAdapter.java:248)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.writeBytesToURL(ExtentCucumberAdapter.java:236)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.handleEmbed(ExtentCucumberAdapter.java:222)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.access$400(ExtentCucumberAdapter.java:62)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter$6.receive(ExtentCucumberAdapter.java:122)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter$6.receive(ExtentCucumberAdapter.java:119)
+	at cucumber.runner.AbstractEventPublisher.send(AbstractEventPublisher.java:45)
+	at cucumber.runner.AbstractEventBus.send(AbstractEventBus.java:9)
+	at cucumber.runner.TimeServiceEventBus.send(TimeServiceEventBus.java:3)
+	at cucumber.runner.ThreadLocalRunnerSupplier$SynchronizedEventBus.send(ThreadLocalRunnerSupplier.java:90)
+	at cucumber.runner.ThreadLocalRunnerSupplier$LocalEventBus.send(ThreadLocalRunnerSupplier.java:63)
+	at cucumber.runner.Scenario.embed(Scenario.java:58)
+	at steps.Hooks.tearDown(Hooks.java:21)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:26)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:20)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)
+	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
+	at cucumber.runner.TestStep.run(TestStep.java:49)
+	at cucumber.runner.TestCase.run(TestCase.java:48)
+	at cucumber.runner.Runner.runPickle(Runner.java:40)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:124)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:65)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:133)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+Caused by: java.io.IOException: Failed to create directory C:\Users\Jaiver%20Mauricio%20M\Documents\SOFTESTING\SeleniumAutomatizacion\app\test-output
+	at cucumber.runtime.io.URLOutputStream.ensureParentDirExists(URLOutputStream.java:53)
+	at cucumber.runtime.io.URLOutputStream.<init>(URLOutputStream.java:33)
+	at cucumber.runtime.io.URLOutputStream.<init>(URLOutputStream.java:24)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.createReportFileOutputStream(ExtentCucumberAdapter.java:246)
+	... 51 more
+</textarea></span>
+												</div>
+											</div>
+											<div class="st fail test l1" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+												<span class="ts">fail</span>&nbsp;&nbsp;
+												<span class="tn">|---[As a user, I enter all the data correctly and submit the form] started</span>
+												
+											</div>
+											<div class="st fail test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+												<span class="ts">fail</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[As a user, I enter all the data correctly and submit the form] started</span>
+												
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[Given I write correctly the data in the field of nombreDenilson] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[Given I write correctly the data in the field of nombreDenilson]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write correctly the data in the field of correodagudelo@gmail.com] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write correctly the data in the field of correodagudelo@gmail.com]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write correctly the data in the field of barrioCalarca] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write correctly the data in the field of barrioCalarca]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:37</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write correctly the data in the field of asuntoconsulta] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write correctly the data in the field of asuntoconsulta]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write correctly the data in the field of mensajeconsultar puntaje] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write correctly the data in the field of mensajeconsultar puntaje]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[When I send the information] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[When I send the information]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st fail test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+												<span class="ts">fail</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[But I should not see an error message] started</span>
+												
+												<div class="st fail">
+													<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+													<span class="ts">fail</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[But I should not see an error message]</span>
+													
+													<span class="td">threw an exception<br><textarea disabled class="code-block">java.lang.AssertionError: Values should be different. Actual: UPPPPS ALGO HA FALLADO :(
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failEquals(Assert.java:185)
+	at org.junit.Assert.assertNotEquals(Assert.java:161)
+	at org.junit.Assert.assertNotEquals(Assert.java:175)
+	at steps.CorrectFieldsSteps.iShouldNotSeeAnErrorMessage(CorrectFieldsSteps.java:48)
+	at ✽.I should not see an error message(src/test/resources/features/Form.feature:21)
+</textarea></span>
+												</div>
+											</div>
+											<div class="st fail test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+												<span class="ts">fail</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)] started</span>
+												
+												<div class="st info">
+													<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+													<span class="ts">info</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)]</span>
+													
+													<span class="td">Scenario fallido, ver imagen adjunta.</span>
+												</div>
+												<div class="st fail">
+													<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+													<span class="ts">fail</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)]</span>
+													
+													<span class="td">threw an exception<br><textarea disabled class="code-block">org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : UPPPPS ALGO HA FALLADO :(}
+  (Session info: chrome=106.0.5249.103): UPPPPS ALGO HA FALLADO :(
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'LAPTOP-10PQKDQR', ip: '169.254.209.36', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 106.0.5249.103, chrome: {chromedriverVersion: 105.0.5195.52 (412c95e51883..., userDataDir: C:\Users\JAIVER~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:62161}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: d5c44a9dad854388c7c7be61a7b0e381
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:120)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at steps.Hooks.tearDown(Hooks.java:20)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:26)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:20)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)
+	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
+	at cucumber.runner.TestStep.run(TestStep.java:49)
+	at cucumber.runner.TestCase.run(TestCase.java:48)
+	at cucumber.runner.Runner.runPickle(Runner.java:40)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:124)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:65)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:133)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+</textarea></span>
+												</div>
+											</div>
+											<div class="st pass test l1" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">|---[As a user, I leave all the fields blank and submit the form] started</span>
+												
+											</div>
+											<div class="st pass test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Given I send the form, without filling the text fields] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Given I send the form, without filling the text fields]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Then I should see an error message] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Then I should see an error message]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l1" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">|---[I, as a user, enter incorrect data in the text fields] started</span>
+												
+											</div>
+											<div class="st pass test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[I, as a user, enter incorrect data in the text fields] started</span>
+												
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:38</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[Given I write incorrectly the data in the field of nombreD] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:39</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[Given I write incorrectly the data in the field of nombreD]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:39</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write incorrectly the data in the field of correod-m] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:39</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write incorrectly the data in the field of correod-m]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:39</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write incorrectly the data in the field of barrioCa] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write incorrectly the data in the field of barrioCa]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write incorrectly the data in the field of asuntoco] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write incorrectly the data in the field of asuntoco]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write incorrectly the data in the field of mensajep] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[And I write incorrectly the data in the field of mensajep]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[When I send the incorrect information] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[When I send the incorrect information]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[Then I should see an error alert on] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[Then I should see an error alert on]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st pass test l3" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st fail test l1" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+												<span class="ts">fail</span>&nbsp;&nbsp;
+												<span class="tn">|---[I, as a user, want to reload the page, entering option Caso 1, in the header] started</span>
+												
+											</div>
+											<div class="st pass test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:40</span>&nbsp;
+												<span class="ts">pass</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Given I enter in the option Caso1, in the header] started</span>
+												
+												<div class="st pass">
+													<span class="tt">10.06.2022 07:23:41</span>&nbsp;
+													<span class="ts">pass</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Given I enter in the option Caso1, in the header]</span>
+													
+													<span class="td"></span>
+												</div>
+											</div>
+											<div class="st fail test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:41</span>&nbsp;
+												<span class="ts">fail</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[But I should not see a page not found error] started</span>
+												
+												<div class="st fail">
+													<span class="tt">10.06.2022 07:23:41</span>&nbsp;
+													<span class="ts">fail</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[But I should not see a page not found error]</span>
+													
+													<span class="td">threw an exception<br><textarea disabled class="code-block">java.lang.AssertionError: Values should be different. Actual: Not Found
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failEquals(Assert.java:185)
+	at org.junit.Assert.assertNotEquals(Assert.java:161)
+	at org.junit.Assert.assertNotEquals(Assert.java:175)
+	at steps.ReloadFormSteps.iShouldNotSeeAPageNotFoundError(ReloadFormSteps.java:22)
+	at ✽.I should not see a page not found error(src/test/resources/features/Form.feature:45)
+</textarea></span>
+												</div>
+											</div>
+											<div class="st fail test l2" 
+												tags=""
+												devices="">
+												<span class="tt">10.06.2022 07:23:41</span>&nbsp;
+												<span class="ts">fail</span>&nbsp;&nbsp;
+												<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)] started</span>
+												
+												<div class="st info">
+													<span class="tt">10.06.2022 07:23:41</span>&nbsp;
+													<span class="ts">info</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)]</span>
+													
+													<span class="td">Scenario fallido, ver imagen adjunta.</span>
+												</div>
+												<div class="st fail">
+													<span class="tt">10.06.2022 07:23:41</span>&nbsp;
+													<span class="ts">fail</span>&nbsp;&nbsp; 
+													<span class="tn">&nbsp;&nbsp;&nbsp;&nbsp;|---[Hooks.tearDown(Scenario)]</span>
+													
+													<span class="td">threw an exception<br><textarea disabled class="code-block">cucumber.runtime.CucumberException: java.io.IOException: Failed to create directory C:\Users\Jaiver%20Mauricio%20M\Documents\SOFTESTING\SeleniumAutomatizacion\app\test-output
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.createReportFileOutputStream(ExtentCucumberAdapter.java:248)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.writeBytesToURL(ExtentCucumberAdapter.java:236)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.handleEmbed(ExtentCucumberAdapter.java:222)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.access$400(ExtentCucumberAdapter.java:62)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter$6.receive(ExtentCucumberAdapter.java:122)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter$6.receive(ExtentCucumberAdapter.java:119)
+	at cucumber.runner.AbstractEventPublisher.send(AbstractEventPublisher.java:45)
+	at cucumber.runner.AbstractEventBus.send(AbstractEventBus.java:9)
+	at cucumber.runner.TimeServiceEventBus.send(TimeServiceEventBus.java:3)
+	at cucumber.runner.ThreadLocalRunnerSupplier$SynchronizedEventBus.send(ThreadLocalRunnerSupplier.java:90)
+	at cucumber.runner.ThreadLocalRunnerSupplier$LocalEventBus.send(ThreadLocalRunnerSupplier.java:63)
+	at cucumber.runner.Scenario.embed(Scenario.java:58)
+	at steps.Hooks.tearDown(Hooks.java:21)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:26)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:20)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)
+	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
+	at cucumber.runner.TestStep.run(TestStep.java:49)
+	at cucumber.runner.TestCase.run(TestCase.java:48)
+	at cucumber.runner.Runner.runPickle(Runner.java:40)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:124)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:65)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:133)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+Caused by: java.io.IOException: Failed to create directory C:\Users\Jaiver%20Mauricio%20M\Documents\SOFTESTING\SeleniumAutomatizacion\app\test-output
+	at cucumber.runtime.io.URLOutputStream.ensureParentDirExists(URLOutputStream.java:53)
+	at cucumber.runtime.io.URLOutputStream.<init>(URLOutputStream.java:33)
+	at cucumber.runtime.io.URLOutputStream.<init>(URLOutputStream.java:24)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.createReportFileOutputStream(ExtentCucumberAdapter.java:246)
+	... 51 more
+</textarea></span>
+												</div>
+											</div>
+											</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/logger/js/logger-scripts.js"></script>
+	</body>
+</html>

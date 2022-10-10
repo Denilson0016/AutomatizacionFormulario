@@ -1,0 +1,998 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href='https://cdn.rawgit.com/extent-framework/extent-github-cdn/b65cd69/v3html/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>ExtentReports</title>
+
+	<style type='text/css'>
+		/* json-tree */
+		.jstBracket,.jstComma,.jstValue{white-space:pre-wrap}.jstValue{font-size:10px;font-weight:400;font-family:"Lucida Console",Monaco,monospace}.jstProperty{color:#666;word-wrap:break-word}.jstBool{color:#2525CC}.jstNum{color:#D036D0}.jstNull{color:gray}.jstStr{color:#2DB669}.jstFold:after{content:' -';cursor:pointer}.jstExpand{white-space:normal}.jstExpand:after{content:' +';cursor:pointer}.jstFolded{white-space:normal!important}.jstHiddenBlock{display:none}
+	</style>
+	
+	<script type="text/javascript">
+		/*! json-tree - v0.2.2 - 2017-09-25, MIT LICENSE */
+		var JSONTree=function(){var n={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","/":"&#x2F;"},t=0,r=0;this.create=function(n,t){return r+=1,N(u(n,0,!1),{class:"jstValue"})};var e=function(t){return t.replace(/[&<>'"]/g,function(t){return n[t]})},s=function(){return r+"_"+t++},u=function(n,t,r){if(null===n)return f(r?t:0);switch(typeof n){case"boolean":return l(n,r?t:0);case"number":return i(n,r?t:0);case"string":return o(n,r?t:0);default:return n instanceof Array?a(n,t,r):c(n,t,r)}},c=function(n,t,r){var e=s(),u=Object.keys(n).map(function(r){return j(r,n[r],t+1,!0)}).join(m()),c=[g("{",r?t:0,e),N(u,{id:e}),p("}",t)].join("\n");return N(c,{})},a=function(n,t,r){var e=s(),c=n.map(function(n){return u(n,t+1,!0)}).join(m());return[g("[",r?t:0,e),N(c,{id:e}),p("]",t)].join("\n")},o=function(n,t){var r=e(JSON.stringify(n));return N(v(r,t),{class:"jstStr"})},i=function(n,t){return N(v(n,t),{class:"jstNum"})},l=function(n,t){return N(v(n,t),{class:"jstBool"})},f=function(n){return N(v("null",n),{class:"jstNull"})},j=function(n,t,r){var s=v(e(JSON.stringify(n))+": ",r),c=N(u(t,r,!1),{});return N(s+c,{class:"jstProperty"})},m=function(){return N(",\n",{class:"jstComma"})},N=function(n,t){return d("span",t,n)},d=function(n,t,r){return"<"+n+Object.keys(t).map(function(n){return" "+n+'="'+t[n]+'"'}).join("")+">"+r+"</"+n+">"},g=function(n,t,r){return N(v(n,t),{class:"jstBracket"})+N("",{class:"jstFold",onclick:"JSONTree.toggle('"+r+"')"})};this.toggle=function(n){var t=document.getElementById(n),r=t.parentNode,e=t.previousElementSibling;""===t.className?(t.className="jstHiddenBlock",r.className="jstFolded",e.className="jstExpand"):(t.className="",r.className="",e.className="jstFold")};var p=function(n,t){return N(v(n,t),{})},v=function(n,t){return Array(2*t+1).join(" ")+n};return this}();
+	</script>
+</head>
+	<body class='extent standard default hide-overflow bdd-report'>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo black"><img src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png"></a>
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
+		</ul>
+		<!-- report name -->
+		<span class='report-name'>ExtentReports</span>
+		<!-- report headline -->
+		<span class='report-headline'></span>
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<a href='#!'>
+			<span class='label blue darken-3 suite-start-time'>Oct 6, 2022 07:23:32 AM</span>
+			</a>
+		</ul>
+	</div>
+</nav>		<!-- container -->
+		<div class='container'>
+<div id='test-view' class='view'>
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+				<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+										<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+			<!-- category toggle -->
+			<!-- category toggle -->
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+				<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+				<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+				<i class='material-icons'>search</i> Search
+				</a>
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+<div id='test-view-charts' class='subview-full'>
+    <div id='charts-row' class='row nm-v nm-h'>
+        <div class='col s12 m4 l4 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Features</div>
+                <div class='chart-box' style="max-height:94px;">
+                    <canvas id='parent-analysis' width='90' height='70'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> feature(s) passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> feature(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                </div>
+            </div>
+        </div>
+        <div class='col s12 m4 l4 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Scenarios</div>
+                <div class='chart-box' style="max-height:94px;">
+                    <canvas id='child-analysis' width='90' height='70'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span class='tooltipped' data-position='top' data-tooltip='50%'><span class='strong'>3</span> scenario(s) passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong tooltipped' data-position='top' data-tooltip='50%'>3</span> scenario(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                </div>
+            </div>
+        </div>
+        <div class='col s12 m4 l4 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Steps</div>
+                <div class='chart-box' style="max-height:94px;">
+                    <canvas id='grandchild-analysis' width='90' height='70'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span class='tooltipped' data-position='top' data-tooltip='80%'><span class='strong'>24</span> step(s) passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong tooltipped' data-position='top' data-tooltip='20%'>6</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="timeline-chart" class="row nm-v nm-h">
+        <div class="col s12 m12 l12 np-h">
+            <div class="card-panel">
+                <div class='left panel-name'>Timeline (seconds)</div>
+                <div class="chart-box" style="width:98%;max-height:145px;">
+                    <canvas id="timeline" height="120"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>	<div class='subview-left left'>
+		<div class='view-summary'>
+			<ul id='test-collection' class='test-collection'>
+				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>Test form functionality</span>
+						<span class='test-time'>Oct 6, 2022 07:23:32 AM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class="sr-filters bdd-filters">
+    <a class="btn-floating waves-effect waves-light pass green" title="pass"><i class='material-icons'>check_circle</i></a>
+    <a class="btn-floating waves-effect waves-light fail red" title="fail"><i class='material-icons'>cancel</i></a>
+    <a class="btn-floating waves-effect waves-light skip blue" title="skip"><i class='material-icons'>redo</i></a>
+    <a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
+</div>
+<div class='test-desc'>various personal details are entered into the form and then submitted</div>
+<div class='scenario node' test-id='2' status='pass'>
+    <span class='duration right label'>0h 0m 4s+547ms</span>
+    <div class="bdd-test">
+        <div class="scenario-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span> Scenario: Go to webSite</div>
+    </div>
+    <ul class='steps'>
+        <li test-id='3' class='node given pass' status='pass'>
+            <div class="step-name" title="BackgroundSteps.navigateToPage()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Given entry to the page</div>
+                <div class="node-step"></div>
+        </li>
+        <li test-id='4' class='node when pass' status='pass'>
+            <div class="step-name" title="BackgroundSteps.ignoreSecurityRestriction()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>When ignore security restriction</div>
+                <div class="node-step"></div>
+        </li>
+        <li test-id='5' class='node then pass' status='pass'>
+            <div class="step-name" title="BackgroundSteps.canIGoToTheFormPage()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Then can i go to the form page</div>
+                <div class="node-step"></div>
+        </li>
+        <li test-id='6' class='node asterisk pass' status='pass'>
+            <div class="step-name" title=""><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Hooks.tearDown(Scenario)</div>
+                <div class="node-step"></div>
+        </li>
+    </ul>
+</div>
+<div class='scenario node' test-id='7' status='fail'>
+    <span class='duration right label'>0h 0m 0s+217ms</span>
+    <div class="bdd-test">
+        <div class="scenario-name"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span> Scenario: As a user, I want the titles of the fields corresponding to Neighborhood and Message to be well written.</div>
+    </div>
+    <ul class='steps'>
+        <li test-id='8' class='node given pass' status='pass'>
+            <div class="step-name" title="LabelsSteps.lookForTheNeighborhoodLabel()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Given look for the neighborhood label</div>
+                <div class="node-step"></div>
+        </li>
+        <li test-id='9' class='node and pass' status='pass'>
+            <div class="step-name" title="LabelsSteps.lookForTheMessageLabel()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>And look for the message label</div>
+                <div class="node-step"></div>
+        </li>
+        <li test-id='10' class='node then fail' status='fail'>
+            <div class="step-name" title="LabelsSteps.theLabelsAreWellWritten()"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>Then the labels are well written</div>
+                <textarea disabled class="code-block">org.junit.ComparisonFailure: expected:<[Barrio:]> but was:<[Varrio]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at steps.LabelsSteps.theLabelsAreWellWritten(LabelsSteps.java:29)
+	at ✽.the labels are well written(src/test/resources/features/Form.feature:12)
+</textarea>
+        </li>
+        <li test-id='11' class='node asterisk fail' status='fail'>
+            <div class="step-name" title=""><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>Hooks.tearDown(Scenario)</div>
+                <div class="node-step">Scenario fallido, ver imagen adjunta.</div>
+                <textarea disabled class="code-block">cucumber.runtime.CucumberException: java.io.IOException: Failed to create directory C:\Users\Jaiver%20Mauricio%20M\Documents\SOFTESTING\SeleniumAutomatizacion\app\test-output
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.createReportFileOutputStream(ExtentCucumberAdapter.java:248)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.writeBytesToURL(ExtentCucumberAdapter.java:236)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.handleEmbed(ExtentCucumberAdapter.java:222)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.access$400(ExtentCucumberAdapter.java:62)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter$6.receive(ExtentCucumberAdapter.java:122)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter$6.receive(ExtentCucumberAdapter.java:119)
+	at cucumber.runner.AbstractEventPublisher.send(AbstractEventPublisher.java:45)
+	at cucumber.runner.AbstractEventBus.send(AbstractEventBus.java:9)
+	at cucumber.runner.TimeServiceEventBus.send(TimeServiceEventBus.java:3)
+	at cucumber.runner.ThreadLocalRunnerSupplier$SynchronizedEventBus.send(ThreadLocalRunnerSupplier.java:90)
+	at cucumber.runner.ThreadLocalRunnerSupplier$LocalEventBus.send(ThreadLocalRunnerSupplier.java:63)
+	at cucumber.runner.Scenario.embed(Scenario.java:58)
+	at steps.Hooks.tearDown(Hooks.java:21)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:26)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:20)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)
+	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
+	at cucumber.runner.TestStep.run(TestStep.java:49)
+	at cucumber.runner.TestCase.run(TestCase.java:48)
+	at cucumber.runner.Runner.runPickle(Runner.java:40)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:124)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:65)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:133)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+Caused by: java.io.IOException: Failed to create directory C:\Users\Jaiver%20Mauricio%20M\Documents\SOFTESTING\SeleniumAutomatizacion\app\test-output
+	at cucumber.runtime.io.URLOutputStream.ensureParentDirExists(URLOutputStream.java:53)
+	at cucumber.runtime.io.URLOutputStream.<init>(URLOutputStream.java:33)
+	at cucumber.runtime.io.URLOutputStream.<init>(URLOutputStream.java:24)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.createReportFileOutputStream(ExtentCucumberAdapter.java:246)
+	... 51 more
+</textarea>
+        </li>
+    </ul>
+</div>
+<div class='scenariooutline node' test-id='12' status='fail'>
+    <span class='duration right label'>0h 0m 0s+813ms</span>
+    <div class="bdd-test">
+        <div class="scenario-name"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span> ScenarioOutline: As a user, I enter all the data correctly and submit the form</div>
+        <table class='runtime-table table-striped table'><tr><td>name</td><td>email</td><td>neighborhood</td><td>affair</td><td>message</td></tr><tr><td>Denilson</td><td>dagudelo@gmail.com</td><td>Calarca</td><td>consulta</td><td>consultar puntaje</td></tr></table>
+    </div>
+    <ul class='steps'>
+        <li test-id='13' class='node scenario fail' status='fail'>
+            <div class="step-name" title=""><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>As a user, I enter all the data correctly and submit the form</div>
+            <ul class='gc steps'>
+                    <li test-id='14' class='gc given pass' status='pass'>
+                        <h6 class="step-name" title="CorrectFieldsSteps.iWriteCorrectlyName(String)"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Given I write correctly the data in the field of nombreDenilson</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='15' class='gc and pass' status='pass'>
+                        <h6 class="step-name" title="CorrectFieldsSteps.iWriteCorrectlyEmail(String)"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>And I write correctly the data in the field of correodagudelo@gmail.com</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='16' class='gc and pass' status='pass'>
+                        <h6 class="step-name" title="CorrectFieldsSteps.writeCorrectlyBarrio(String)"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>And I write correctly the data in the field of barrioCalarca</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='17' class='gc and pass' status='pass'>
+                        <h6 class="step-name" title="CorrectFieldsSteps.iWriteCorrectlyAsunto(String)"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>And I write correctly the data in the field of asuntoconsulta</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='18' class='gc and pass' status='pass'>
+                        <h6 class="step-name" title="CorrectFieldsSteps.WriteCorrectlyMensaje(String)"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>And I write correctly the data in the field of mensajeconsultar puntaje</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='19' class='gc when pass' status='pass'>
+                        <h6 class="step-name" title="CorrectFieldsSteps.iSendTheInformation()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>When I send the information</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='20' class='gc but fail' status='fail'>
+                        <h6 class="step-name" title="CorrectFieldsSteps.iShouldNotSeeAnErrorMessage()"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>But I should not see an error message</h6>
+                            <textarea disabled class="code-block">java.lang.AssertionError: Values should be different. Actual: UPPPPS ALGO HA FALLADO :(
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failEquals(Assert.java:185)
+	at org.junit.Assert.assertNotEquals(Assert.java:161)
+	at org.junit.Assert.assertNotEquals(Assert.java:175)
+	at steps.CorrectFieldsSteps.iShouldNotSeeAnErrorMessage(CorrectFieldsSteps.java:48)
+	at ✽.I should not see an error message(src/test/resources/features/Form.feature:21)
+</textarea>
+                                                </li>
+                    <li test-id='21' class='gc asterisk fail' status='fail'>
+                        <h6 class="step-name" title=""><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>Hooks.tearDown(Scenario)</h6>
+                            <div class="node-step">Scenario fallido, ver imagen adjunta.</div>
+                            <textarea disabled class="code-block">org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : UPPPPS ALGO HA FALLADO :(}
+  (Session info: chrome=106.0.5249.103): UPPPPS ALGO HA FALLADO :(
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'LAPTOP-10PQKDQR', ip: '169.254.209.36', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 106.0.5249.103, chrome: {chromedriverVersion: 105.0.5195.52 (412c95e51883..., userDataDir: C:\Users\JAIVER~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:62161}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: d5c44a9dad854388c7c7be61a7b0e381
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:120)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at steps.Hooks.tearDown(Hooks.java:20)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:26)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:20)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)
+	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
+	at cucumber.runner.TestStep.run(TestStep.java:49)
+	at cucumber.runner.TestCase.run(TestCase.java:48)
+	at cucumber.runner.Runner.runPickle(Runner.java:40)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:124)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:65)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:133)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+</textarea>
+                                                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class='scenario node' test-id='22' status='pass'>
+    <span class='duration right label'>0h 0m 0s+434ms</span>
+    <div class="bdd-test">
+        <div class="scenario-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span> Scenario: As a user, I leave all the fields blank and submit the form</div>
+    </div>
+    <ul class='steps'>
+        <li test-id='23' class='node given pass' status='pass'>
+            <div class="step-name" title="CleanFieldsSteps.iSendTheFormWithoutFillingTheTextFields()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Given I send the form, without filling the text fields</div>
+                <div class="node-step"></div>
+        </li>
+        <li test-id='24' class='node then pass' status='pass'>
+            <div class="step-name" title="CleanFieldsSteps.iShouldSeeAnErrorMessage()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Then I should see an error message</div>
+                <div class="node-step"></div>
+        </li>
+        <li test-id='25' class='node asterisk pass' status='pass'>
+            <div class="step-name" title=""><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Hooks.tearDown(Scenario)</div>
+                <div class="node-step"></div>
+        </li>
+    </ul>
+</div>
+<div class='scenariooutline node' test-id='26' status='pass'>
+    <span class='duration right label'>0h 0m 1s+630ms</span>
+    <div class="bdd-test">
+        <div class="scenario-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span> ScenarioOutline: I, as a user, enter incorrect data in the text fields</div>
+        <table class='runtime-table table-striped table'><tr><td>name</td><td>email</td><td>neighborhood</td><td>affair</td><td>message</td></tr><tr><td>D</td><td>d-m</td><td>Ca</td><td>co</td><td>p</td></tr></table>
+    </div>
+    <ul class='steps'>
+        <li test-id='27' class='node scenario pass' status='pass'>
+            <div class="step-name" title=""><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>I, as a user, enter incorrect data in the text fields</div>
+            <ul class='gc steps'>
+                    <li test-id='28' class='gc given pass' status='pass'>
+                        <h6 class="step-name" title="IncorrectFieldsSteps.iWriteInCorrectlyName(String)"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Given I write incorrectly the data in the field of nombreD</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='29' class='gc and pass' status='pass'>
+                        <h6 class="step-name" title="IncorrectFieldsSteps.iWriteInCorrectlyEmail(String)"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>And I write incorrectly the data in the field of correod-m</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='30' class='gc and pass' status='pass'>
+                        <h6 class="step-name" title="IncorrectFieldsSteps.writeInCorrectlyBarrio(String)"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>And I write incorrectly the data in the field of barrioCa</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='31' class='gc and pass' status='pass'>
+                        <h6 class="step-name" title="IncorrectFieldsSteps.iWriteInCorrectlyAsunto(String)"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>And I write incorrectly the data in the field of asuntoco</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='32' class='gc and pass' status='pass'>
+                        <h6 class="step-name" title="IncorrectFieldsSteps.WriteInCorrectlyMensaje(String)"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>And I write incorrectly the data in the field of mensajep</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='33' class='gc when pass' status='pass'>
+                        <h6 class="step-name" title="IncorrectFieldsSteps.iSendTheInformation()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>When I send the incorrect information</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='34' class='gc then pass' status='pass'>
+                        <h6 class="step-name" title="IncorrectFieldsSteps.iShouldNotSeeAnErrorMessage()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Then I should see an error alert on</h6>
+                            <div class="node-step"></div>
+                    </li>
+                    <li test-id='35' class='gc asterisk pass' status='pass'>
+                        <h6 class="step-name" title=""><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Hooks.tearDown(Scenario)</h6>
+                            <div class="node-step"></div>
+                    </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class='scenario node' test-id='36' status='fail'>
+    <span class='duration right label'>0h 0m 0s+812ms</span>
+    <div class="bdd-test">
+        <div class="scenario-name"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span> Scenario: I, as a user, want to reload the page, entering option Caso 1, in the header</div>
+    </div>
+    <ul class='steps'>
+        <li test-id='37' class='node given pass' status='pass'>
+            <div class="step-name" title="ReloadFormSteps.iEnterInTheOptionCasoInTheHeader()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Given I enter in the option Caso1, in the header</div>
+                <div class="node-step"></div>
+        </li>
+        <li test-id='38' class='node but fail' status='fail'>
+            <div class="step-name" title="ReloadFormSteps.iShouldNotSeeAPageNotFoundError()"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>But I should not see a page not found error</div>
+                <textarea disabled class="code-block">java.lang.AssertionError: Values should be different. Actual: Not Found
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failEquals(Assert.java:185)
+	at org.junit.Assert.assertNotEquals(Assert.java:161)
+	at org.junit.Assert.assertNotEquals(Assert.java:175)
+	at steps.ReloadFormSteps.iShouldNotSeeAPageNotFoundError(ReloadFormSteps.java:22)
+	at ✽.I should not see a page not found error(src/test/resources/features/Form.feature:45)
+</textarea>
+        </li>
+        <li test-id='39' class='node asterisk fail' status='fail'>
+            <div class="step-name" title=""><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>Hooks.tearDown(Scenario)</div>
+                <div class="node-step">Scenario fallido, ver imagen adjunta.</div>
+                <textarea disabled class="code-block">cucumber.runtime.CucumberException: java.io.IOException: Failed to create directory C:\Users\Jaiver%20Mauricio%20M\Documents\SOFTESTING\SeleniumAutomatizacion\app\test-output
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.createReportFileOutputStream(ExtentCucumberAdapter.java:248)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.writeBytesToURL(ExtentCucumberAdapter.java:236)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.handleEmbed(ExtentCucumberAdapter.java:222)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.access$400(ExtentCucumberAdapter.java:62)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter$6.receive(ExtentCucumberAdapter.java:122)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter$6.receive(ExtentCucumberAdapter.java:119)
+	at cucumber.runner.AbstractEventPublisher.send(AbstractEventPublisher.java:45)
+	at cucumber.runner.AbstractEventBus.send(AbstractEventBus.java:9)
+	at cucumber.runner.TimeServiceEventBus.send(TimeServiceEventBus.java:3)
+	at cucumber.runner.ThreadLocalRunnerSupplier$SynchronizedEventBus.send(ThreadLocalRunnerSupplier.java:90)
+	at cucumber.runner.ThreadLocalRunnerSupplier$LocalEventBus.send(ThreadLocalRunnerSupplier.java:63)
+	at cucumber.runner.Scenario.embed(Scenario.java:58)
+	at steps.Hooks.tearDown(Hooks.java:21)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:26)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:20)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)
+	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
+	at cucumber.runner.TestStep.run(TestStep.java:49)
+	at cucumber.runner.TestCase.run(TestCase.java:48)
+	at cucumber.runner.Runner.runPickle(Runner.java:40)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:124)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:65)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:133)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+Caused by: java.io.IOException: Failed to create directory C:\Users\Jaiver%20Mauricio%20M\Documents\SOFTESTING\SeleniumAutomatizacion\app\test-output
+	at cucumber.runtime.io.URLOutputStream.ensureParentDirExists(URLOutputStream.java:53)
+	at cucumber.runtime.io.URLOutputStream.<init>(URLOutputStream.java:33)
+	at cucumber.runtime.io.URLOutputStream.<init>(URLOutputStream.java:24)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.createReportFileOutputStream(ExtentCucumberAdapter.java:246)
+	... 51 more
+</textarea>
+        </li>
+    </ul>
+</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<div id='step-filters' class="right sr-filters">
+				<a class="btn-floating waves-effect waves-light green" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></a>
+				<a class="btn-floating waves-effect waves-light red" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></a>
+				<a class="btn-floating waves-effect waves-light red darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></a>
+				<a class="btn-floating waves-effect waves-light pink text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></a>
+				<a class="btn-floating waves-effect waves-light orange" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></a>
+				<a class="btn-floating waves-effect waves-light teal" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></a>
+				<a class="btn-floating waves-effect waves-light grey" status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></a>
+			</div>
+			<h5 class='test-name'></h5>
+		</div>
+	</div>
+	<!-- subview right -->
+</div>
+<!-- test view --><!-- category view --><div id='exception-view' class='view hide'>
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+				<i class='material-icons'>search</i> Search
+				</a>
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+	<div class='subview-left left'>
+		<div class='view-summary'>
+			<ul id='exception-collection' class='exception-collection'>
+				<li class='exception displayed active'>
+					<div class='exception-heading'>
+						<span class='exception-name'>org.junit.ComparisonFailure</span>
+						<span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
+					</div>
+					<div class='exception-content hide'>
+						<div class='exception-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Oct 6, 2022 07:23:37 AM</td>
+										<td class='linked' test-id='10'>Test form functionality.As a user, I want the titles of the fields corresponding to Neighborhood and Message to be well written..Then the labels are well written</td>
+										<td>
+											<textarea disabled class="code-block">org.junit.ComparisonFailure: expected:<[Barrio:]> but was:<[Varrio]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at steps.LabelsSteps.theLabelsAreWellWritten(LabelsSteps.java:29)
+	at ✽.the labels are well written(src/test/resources/features/Form.feature:12)
+</textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='exception displayed active'>
+					<div class='exception-heading'>
+						<span class='exception-name'>cucumber.runtime.CucumberException</span>
+						<span class='exception-count right'><span class='label red lighten-1 white-text'>2</span></span>
+					</div>
+					<div class='exception-content hide'>
+						<div class='exception-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Oct 6, 2022 07:23:37 AM</td>
+										<td class='linked' test-id='11'>Test form functionality.As a user, I want the titles of the fields corresponding to Neighborhood and Message to be well written..Hooks.tearDown(Scenario)</td>
+										<td>
+											<textarea disabled class="code-block">cucumber.runtime.CucumberException: java.io.IOException: Failed to create directory C:\Users\Jaiver%20Mauricio%20M\Documents\SOFTESTING\SeleniumAutomatizacion\app\test-output
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.createReportFileOutputStream(ExtentCucumberAdapter.java:248)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.writeBytesToURL(ExtentCucumberAdapter.java:236)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.handleEmbed(ExtentCucumberAdapter.java:222)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.access$400(ExtentCucumberAdapter.java:62)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter$6.receive(ExtentCucumberAdapter.java:122)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter$6.receive(ExtentCucumberAdapter.java:119)
+	at cucumber.runner.AbstractEventPublisher.send(AbstractEventPublisher.java:45)
+	at cucumber.runner.AbstractEventBus.send(AbstractEventBus.java:9)
+	at cucumber.runner.TimeServiceEventBus.send(TimeServiceEventBus.java:3)
+	at cucumber.runner.ThreadLocalRunnerSupplier$SynchronizedEventBus.send(ThreadLocalRunnerSupplier.java:90)
+	at cucumber.runner.ThreadLocalRunnerSupplier$LocalEventBus.send(ThreadLocalRunnerSupplier.java:63)
+	at cucumber.runner.Scenario.embed(Scenario.java:58)
+	at steps.Hooks.tearDown(Hooks.java:21)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:26)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:20)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)
+	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
+	at cucumber.runner.TestStep.run(TestStep.java:49)
+	at cucumber.runner.TestCase.run(TestCase.java:48)
+	at cucumber.runner.Runner.runPickle(Runner.java:40)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:124)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:65)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:133)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+Caused by: java.io.IOException: Failed to create directory C:\Users\Jaiver%20Mauricio%20M\Documents\SOFTESTING\SeleniumAutomatizacion\app\test-output
+	at cucumber.runtime.io.URLOutputStream.ensureParentDirExists(URLOutputStream.java:53)
+	at cucumber.runtime.io.URLOutputStream.<init>(URLOutputStream.java:33)
+	at cucumber.runtime.io.URLOutputStream.<init>(URLOutputStream.java:24)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.createReportFileOutputStream(ExtentCucumberAdapter.java:246)
+	... 51 more
+</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>Oct 6, 2022 07:23:41 AM</td>
+										<td class='linked' test-id='39'>Test form functionality.I, as a user, want to reload the page, entering option Caso 1, in the header.Hooks.tearDown(Scenario)</td>
+										<td>
+											<textarea disabled class="code-block">cucumber.runtime.CucumberException: java.io.IOException: Failed to create directory C:\Users\Jaiver%20Mauricio%20M\Documents\SOFTESTING\SeleniumAutomatizacion\app\test-output
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.createReportFileOutputStream(ExtentCucumberAdapter.java:248)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.writeBytesToURL(ExtentCucumberAdapter.java:236)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.handleEmbed(ExtentCucumberAdapter.java:222)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.access$400(ExtentCucumberAdapter.java:62)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter$6.receive(ExtentCucumberAdapter.java:122)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter$6.receive(ExtentCucumberAdapter.java:119)
+	at cucumber.runner.AbstractEventPublisher.send(AbstractEventPublisher.java:45)
+	at cucumber.runner.AbstractEventBus.send(AbstractEventBus.java:9)
+	at cucumber.runner.TimeServiceEventBus.send(TimeServiceEventBus.java:3)
+	at cucumber.runner.ThreadLocalRunnerSupplier$SynchronizedEventBus.send(ThreadLocalRunnerSupplier.java:90)
+	at cucumber.runner.ThreadLocalRunnerSupplier$LocalEventBus.send(ThreadLocalRunnerSupplier.java:63)
+	at cucumber.runner.Scenario.embed(Scenario.java:58)
+	at steps.Hooks.tearDown(Hooks.java:21)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:26)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:20)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)
+	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
+	at cucumber.runner.TestStep.run(TestStep.java:49)
+	at cucumber.runner.TestCase.run(TestCase.java:48)
+	at cucumber.runner.Runner.runPickle(Runner.java:40)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:124)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:65)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:133)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+Caused by: java.io.IOException: Failed to create directory C:\Users\Jaiver%20Mauricio%20M\Documents\SOFTESTING\SeleniumAutomatizacion\app\test-output
+	at cucumber.runtime.io.URLOutputStream.ensureParentDirExists(URLOutputStream.java:53)
+	at cucumber.runtime.io.URLOutputStream.<init>(URLOutputStream.java:33)
+	at cucumber.runtime.io.URLOutputStream.<init>(URLOutputStream.java:24)
+	at com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.createReportFileOutputStream(ExtentCucumberAdapter.java:246)
+	... 51 more
+</textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='exception displayed active'>
+					<div class='exception-heading'>
+						<span class='exception-name'>java.lang.AssertionError</span>
+						<span class='exception-count right'><span class='label red lighten-1 white-text'>2</span></span>
+					</div>
+					<div class='exception-content hide'>
+						<div class='exception-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Oct 6, 2022 07:23:38 AM</td>
+										<td class='linked' test-id='20'>Test form functionality.As a user, I enter all the data correctly and submit the form.As a user, I enter all the data correctly and submit the form.But I should not see an error message</td>
+										<td>
+											<textarea disabled class="code-block">java.lang.AssertionError: Values should be different. Actual: UPPPPS ALGO HA FALLADO :(
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failEquals(Assert.java:185)
+	at org.junit.Assert.assertNotEquals(Assert.java:161)
+	at org.junit.Assert.assertNotEquals(Assert.java:175)
+	at steps.CorrectFieldsSteps.iShouldNotSeeAnErrorMessage(CorrectFieldsSteps.java:48)
+	at ✽.I should not see an error message(src/test/resources/features/Form.feature:21)
+</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>Oct 6, 2022 07:23:41 AM</td>
+										<td class='linked' test-id='38'>Test form functionality.I, as a user, want to reload the page, entering option Caso 1, in the header.But I should not see a page not found error</td>
+										<td>
+											<textarea disabled class="code-block">java.lang.AssertionError: Values should be different. Actual: Not Found
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failEquals(Assert.java:185)
+	at org.junit.Assert.assertNotEquals(Assert.java:161)
+	at org.junit.Assert.assertNotEquals(Assert.java:175)
+	at steps.ReloadFormSteps.iShouldNotSeeAPageNotFoundError(ReloadFormSteps.java:22)
+	at ✽.I should not see a page not found error(src/test/resources/features/Form.feature:45)
+</textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='exception displayed active'>
+					<div class='exception-heading'>
+						<span class='exception-name'>org.openqa.selenium.UnhandledAlertException</span>
+						<span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
+					</div>
+					<div class='exception-content hide'>
+						<div class='exception-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Oct 6, 2022 07:23:38 AM</td>
+										<td class='linked' test-id='21'>Test form functionality.As a user, I enter all the data correctly and submit the form.As a user, I enter all the data correctly and submit the form.Hooks.tearDown(Scenario)</td>
+										<td>
+											<textarea disabled class="code-block">org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : UPPPPS ALGO HA FALLADO :(}
+  (Session info: chrome=106.0.5249.103): UPPPPS ALGO HA FALLADO :(
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'LAPTOP-10PQKDQR', ip: '169.254.209.36', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 106.0.5249.103, chrome: {chromedriverVersion: 105.0.5195.52 (412c95e51883..., userDataDir: C:\Users\JAIVER~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:62161}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: d5c44a9dad854388c7c7be61a7b0e381
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:120)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at steps.Hooks.tearDown(Hooks.java:20)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:26)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:20)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)
+	at cucumber.runner.TestStep.executeStep(TestStep.java:63)
+	at cucumber.runner.TestStep.run(TestStep.java:49)
+	at cucumber.runner.TestCase.run(TestCase.java:48)
+	at cucumber.runner.Runner.runPickle(Runner.java:40)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:124)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:65)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:133)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+</textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='exception-name'></h5>
+		</div>
+	</div>
+</div>
+<!-- exception view --><div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Features
+					<div class='panel-lead'>1</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Scenarios
+					<div class='panel-lead'>6</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>30</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Oct 6, 2022 07:23:32 AM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Oct 6, 2022 07:23:41 AM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 0m 8s+741ms</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->		</div>
+		<!-- container -->
+		<script>
+			var statusGroup = {
+                parentCount: 1,
+				passParent: 0,
+				failParent: 1,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 1,
+				childCount: 6,
+				passChild: 3,
+				failChild: 3,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 0,
+				debugChild: 0,
+				exceptionsChild: 3,
+				grandChildCount: 30,
+				passGrandChild: 24,
+				failGrandChild: 6,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				debugGrandChild: 0,
+				exceptionsGrandChild: 6,
+			};
+		</script>
+		<script>
+			var timeline = {
+			        "Test form functionality":8.482
+			};
+		</script>
+		<script src='https://cdn.rawgit.com/extent-framework/extent-github-cdn/b65cd69/v3html/js/extent.js' type='text/javascript'></script>
+		<script type='text/javascript'>
+		</script>
+	</body>
+</html>
